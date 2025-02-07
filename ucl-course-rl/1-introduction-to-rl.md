@@ -92,15 +92,17 @@
     
     - A single RL-based agent learns to play multiple Atari games at a superhuman level.
     - The program adapts to different game environments by learning optimal strategies.
+
 **Audience Questions and Lecturer's Response**
-1. Question about simulation in Reinforcement Learning
+1. Question about **simulation in Reinforcement Learning**
 	- Audience: Whether the helicopter reinforcement learning system was trained in a simulated environment
 	- Lecturer: Approach involved first building a model of the helicopter's behavior using real-world data. The learning was then done offline using this model before being applied to the actual helicopter.
-2. Question about Atari Game Learning
+2. Question about **Atari Game Learning**
 	- Audience: Inquires the reinforcement learning agent playing Atari games
 	- Lecturer: The agent learns purely through trial and error. It has no prior knowledge of the game rules and only receives video input and score feedback. Through reinforcement learning, it figures out how to maximize the score without human guidance.
-- Question about Knowledge transfer between Atari games
+- Question about **Knowledge transfer between Atari games**
 	- Audience: Whether knowledge transfer strategies is applied between Atari games
 	- Lecturer: Each game starts fresh, with no knowledge transfer.
+
 Reinforcement learning (RL) is not just about games, though many applications involve games. RL concepts are broadly applicable beyond gaming.
-### The Reinforcement Learning Problem
+# The Reinforcement Learning Problem
