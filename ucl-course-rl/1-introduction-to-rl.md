@@ -106,3 +106,29 @@
 
 Reinforcement learning (RL) is not just about games, though many applications involve games. RL concepts are broadly applicable beyond gaming.
 # The Reinforcement Learning Problem
+In reinforcement learning (RL), one of the core concepts is the **reward**, which is a numerical feedback signal (R<sub>t</sub>​) given at each time step 't' to indicate how well the agent is performing. The **agent's goal** is to maximize the total sum of rewards over time.
+
+A fundamental hypothesis in RL is that **all goals can be framed as the maximization of expected cumulative reward**. This assumption underlies the entire RL framework, though it can be debated.
+
+Key points:
+
+- **Rewards define objectives**: If there are no intermediate rewards, the agent only receives a reward at the end of an episode.
+- **Handling time-based goals**: If the goal is to achieve something in the shortest time, a common approach is to set a reward of -1 per time step, encouraging the agent to complete the task as quickly as possible.
+### Examples of Rewards
+![Examples of Rewards](./images/3-rewards-example.png)
+
+- **Helicopter Stunts:** Positive rewards are given for following the desired trajectory or staying within a small radius of the target position. A large negative reward is assigned for crashing.
+    
+- **Backgammon:** No intermediate rewards are provided during the game. Only at the end is a reward given: positive for winning, negative for losing. The agent must learn to maximize these end-game rewards by making good decisions throughout the game.
+    
+- **Investment Portfolio:** The reward signal is straightforward: profit (dollars or pounds). The goal is to maximize the total accumulated profit.
+    
+- **Power Station Control:** Positive rewards are given for each unit of power produced. Negative rewards are assigned for exceeding safety thresholds or violating regulations.
+    
+- **Robot Walking:** Positive rewards are given for forward motion (distance traveled). A large negative reward is assigned for falling over.
+    
+- **Atari Games:** Rewards are based on score changes at each step. A positive reward is given for an increase in score, and presumably a negative reward for a decrease (though this isn't explicitly stated).
+
+While these problems appear different, **the goal is to create a unified machine learning framework to handle them all with the same agents and concepts**. The first step is understanding the reward signal, which is received at each time step.
+### Sequential Decision Making
+
