@@ -131,4 +131,85 @@ Key points:
 
 While these problems appear different, **the goal is to create a unified machine learning framework to handle them all with the same agents and concepts**. The first step is understanding the reward signal, which is received at each time step.
 ### Sequential Decision Making
+- **Unified Framework** → Even though problems (e.g., financial investment, helicopter control, chess) seem different, they share a common structure: **making a sequence of decisions to maximize future rewards**.
+- **Maximizing Total Future Reward** → The core idea is to choose actions that result in the highest long-term benefit, not just immediate gain.
+- **Planning Ahead & Long-Term Consequences** →
+    - **Non-Greedy Strategy**: Short-term sacrifices (e.g., spending money, refueling, defensive chess moves) may lead to better outcomes in the future.
+    - **Delayed Reward**: The effect of an action may not be immediate but could influence rewards later.
 
+- **Examples in RL:**
+
+	- **Financial Investment**: Spend money now → Gain profits later.
+	- **Helicopter Control**: Take a detour to refuel → Avoid crashing later.
+	- **Chess**: Sacrificing a piece now → Achieve a stronger position later.
+
+- **Reinforcement Learning Concepts Covered:**
+
+	- **Agent**: The decision-maker (e.g., investor, pilot, chess player).
+	- **Environment**: The world in which the agent operates (e.g., stock market, helicopter physics, chessboard).
+	- **Actions**: Choices available to the agent.
+	- **Reward**: Feedback received for taking an action.
+	- **Policy**: The strategy for choosing actions to maximize future rewards.
+### Environments
+![Agent and Environments](./images/4-agent-environments.png)
+
+**1. The Agent**
+
+- The **agent** is represented as a **"big brain"** that we are designing.
+- It is the entity that **makes decisions and takes actions** in an environment.
+- The goal of RL is to **build an algorithm** that acts as the brain of the agent.
+- The agent could be:
+    - A **robot** that controls motors.
+    - A **trading algorithm** deciding investments.
+    - A **game-playing AI** making strategic moves.
+
+**2. The Agent’s Inputs and Outputs**
+
+At each step, the agent:
+
+1. **Receives an observation** – This is a snapshot of the world (e.g., a camera feed for a robot, a game screen for an AI playing Atari).
+2. **Receives a reward** – A signal indicating how well the agent is performing.
+3. **Takes an action** – Decides the next step based on observations and past experiences.
+
+The agent must **learn** to take the best possible actions to maximize future rewards.
+
+**3. The Environment**
+
+- The **environment** is everything **outside** the agent that it interacts with.
+- It could be:
+    - The **real world** for a self-driving car.
+    - A **stock market simulation** for a trading AI.
+    - A **game environment** for an Atari-playing AI.
+- The environment **responds** to the agent's actions by:
+    - Generating a new **observation**.
+    - Providing a **reward** based on how good/bad the action was.
+
+**4. The Feedback Loop in Reinforcement Learning**
+
+The interaction between agent and environment happens in a continuous **feedback loop**:
+
+4. The agent **observes** the environment.
+5. It **decides** an action.
+6. The action **affects** the environment.
+7. The environment **responds** with a new observation and a reward.
+8. The agent **learns** from this experience and updates its decision-making process.
+
+This process is similar to **trial and error**, where the agent learns over time **which actions lead to higher rewards**.
+
+**5. Example: Atari Game**
+
+- If the agent is playing an Atari game:
+    - It **observes** the screen (pixel data).
+    - It **chooses an action** (e.g., move left, right, jump).
+    - The game **updates** the screen and score.
+    - The agent **receives** a reward based on performance.
+
+The same loop applies to robotics, finance, and many AI applications.
+
+**6. The Machine Learning Challenge in RL**
+
+- RL is fundamentally about **learning from experience**.
+- The **time series of observations, actions, and rewards** forms the dataset.
+- The **learning algorithm** must extract patterns from this experience to improve future decisions.
+
+This is the core problem of **reinforcement learning (RL)**—finding the best **policy** (strategy) to maximize rewards over time.
