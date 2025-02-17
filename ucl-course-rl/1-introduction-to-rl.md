@@ -348,3 +348,134 @@ This means:
 - In real-world AI, **we don’t have direct access to the full environment state**—just like how a person can’t see everything in the world at once.
 - We **only see part of the environment** (this is called an **observation**).
 - This is why AI agents have to make decisions based on **limited information**, not the full environment state.
+
+![Agent State](./images/7-agent-state.png)
+
+
+
+1. **Definition of Agent State**:
+    
+    - It consists of numerical values stored within the algorithm.
+    - It represents a summary of everything the agent has observed so far.
+    - It is used to **determine the next action**.
+2. **Role in Reinforcement Learning**:
+    
+    - The agent state is **not just a direct representation** of the environment.
+    - Instead, it is **constructed** from past actions, observations, and rewards.
+    - This constructed state is then used to inform decision-making.
+3. **Decision-making Process**:
+    
+    - The **agent must decide** what information to keep and what to discard.
+    - Different algorithms make different choices on how to process observations.
+    - The agent's state is designed to **capture history in a meaningful way**.
+4. **Function of History**:
+    
+    - The agent state is a function of history, meaning it is derived from all past interactions.
+    - This function can be any transformation of historical data, determined by the **RL algorithm's design**.
+    - The goal is to convert past interactions into a useful **vector representation** that guides future behavior.
+5. **Final Objective**:
+    
+    - The agent state serves as a compact, informative summary.
+    - It allows the RL algorithm to **make optimal action selections** based on past experiences.
+    - Designing an effective state representation is critical to the **performance of RL models**.
+
+![Information State](./images/8-information-state.png)
+
+- **Definition of Markov State:**
+    
+    - It is a representation of a state that contains all useful information from the history.
+    - It follows an **information-theoretic** approach to ensure no past information is needed beyond the current state.
+- **Markov Property:**
+    
+    - The probability of transitioning to the next state depends only on the current state, not on the entire history.
+    - This means the **future is independent of the past, given the present**.
+- **Implication of the Markov Property:**
+    
+    - One can **discard past states** and retain only the current state without losing any predictive power.
+    - The **state acts as a sufficient statistic** for predicting future actions, observations, and rewards.
+- **Compact Representation:**
+    
+    - Since the state fully characterizes future distributions, it provides a **concise** and **efficient** way to model a system without storing unnecessary historical data.
+
+
+***Question:***
+
+- The speaker acknowledges a point made earlier about rewards arriving many time steps after the action and observation.
+- How this aligns with the approach of only retaining the previous time step while discarding the rest.
+
+***Answer:***
+
+- Even though rewards (good or bad outcomes) come later, we don’t need to remember everything that happened in the past.
+- Instead, if we know the current state (S), it already contains all the important information we need to predict the future.
+- Why Not Remember Everything?
+	- It might seem like we are "throwing away" past information, but we aren’t.
+    - The current state (S) acts as a summary of everything that has happened so far.
+    - So, making decisions based on (S) can still lead to the best possible results.
+- What’s Still Left to Figure Out?
+	- Even though we now understand that using (S) is enough, we still have to learn how to make good decisions based on it.
+	- The real challenge is figuring out what actions to take in each state to maximize rewards in the future.
+
+***Question:***
+- The speaker is explaining how the idea of "Markov state" fits with the example of a helicopter.
+- A Markov state means that everything you need to predict the future is contained in the present moment—you don’t need to remember past events.
+
+***Answer:***
+- To control a helicopter, you need to know certain things about it at the current moment:
+	- **Position** (where it is)
+	- **Velocity** (how fast and in what direction it’s moving)
+    - **Angular velocity** (how fast it’s rotating)
+    - **Angular position** (its orientation)
+    - **Wind direction** (external factors affecting movement)
+- If you have all this information **right now**, you don’t need to remember where the helicopter was 10 minutes ago.
+    - That past position is irrelevant because the future movement is fully determined by the current state and the forces acting on it (like wind).
+- **Why You Don’t Need to Remember the Past (Markov Property)**
+    - The present state contains **all the relevant information**.
+    - Given the **current** position, velocity, and wind, you can accurately predict what happens next without needing old data.
+- **What Happens If You Use an Imperfect State Representation?**
+    - Suppose instead of knowing **position + velocity**, you only knew the **position**.
+    - Now, you **can’t** predict the next movement correctly because you don’t know how fast the helicopter is already moving.
+    - In this case, you would **need to look at past data** to estimate speed and momentum.
+- **Key Takeaway:**
+    
+    - A **Markov state** is one where **the present state gives you all the necessary information to predict the future**.
+    - If the state is incomplete, you would need to look at past events, making it **non-Markov**.
+    - In the helicopter example, having both **position and velocity** makes it a Markov state because it tells you everything needed to determine the next step.
+
+**Clarifying the Concept of a Markov State**
+    
+- The speaker is responding to a question about whether knowing the current state is enough to predict the future.
+- They confirm that **if we know the state, we can determine future states**—this follows the Markov property.
+- However, **knowing the state does not necessarily tell us everything about rewards**.
+
+- **Why is This Important?**
+    
+    - In reinforcement learning (RL) or decision-making problems, we often care not just about future states, but also **future rewards**.
+    - Even if the current state determines the future, that doesn’t mean it automatically tells us whether the outcome will be good (high reward) or bad (low reward).
+- **The Role of History in Rewards**
+    
+    - The speaker reminds us that **history includes all past rewards**.
+    - So, when we say a Markov state is a "sufficient statistic for the future," we mean it must contain enough information to **predict all future rewards**, not just future states.
+
+
+
+**Example 1: The Environment State is Markovian**
+
+- If we had access to the **true environment state**, it would be **ideal** because:
+    - By definition, the environment state **fully determines the future**.
+    - The environment itself **relies on this state** to decide what happens next (e.g., next observation and reward).
+    - This means that the **true environment state is always Markovian**—it has all the necessary information to predict future states and rewards.
+
+**Example 2: The Entire History is Also Markovian (But Not Useful)**
+
+- If we keep track of **all past observations, actions, and rewards**, this would also form a **Markov state**, because:
+    - The **full history** contains all information needed to predict the future.
+    - However, this is **impractical** because storing and processing an entire history is computationally inefficient.
+    - It is **tautological** (obvious) that history contains all the information about itself, but that doesn’t mean it’s a useful way to represent a state.
+
+**Key Takeaways**
+
+1. **Markov states always exist**, but finding a useful representation is the challenge.
+2. The **true environment state** is the best Markov state, but it’s often **not accessible** in real-world problems.
+3. **Keeping the entire history is technically Markovian**, but it’s **impractical**.
+4. The real challenge in reinforcement learning is **finding a compact and effective representation** of state that captures all relevant information **without storing everything**.
+
