@@ -479,3 +479,35 @@ This means:
 3. **Keeping the entire history is technically Markovian**, but it’s **impractical**.
 4. The real challenge in reinforcement learning is **finding a compact and effective representation** of state that captures all relevant information **without storing everything**.
 
+![Rat Example](./images/9-rat-example.png)
+
+- An example to illustrate how learning by trial and error works in an environment where actions lead to either rewards (cheese) or punishments (electrocution). 
+- The example involves a rat (the audience) interacting with an "evil experimenter" who provides different sequences of actions (light, bell, lever) and outcomes.
+- The predictions depend on the agent's **state representation**:
+    - If the state is the last three actions, electrocution seems likely.
+    - If the state is the count of actions, it might suggest cheese.
+    - If the state is the full sequence, the outcome remains uncertain.
+- The example emphasizes how different ways of encoding **state information** influence decision-making and learning.
+
+![Fully Observable Environments](./images/10-fully-observable-environments.png)
+
+- **Fully observable environments**.
+    - In such environments, the **agent has complete visibility** into the environment's state.
+    - The agent directly **observes and interacts with numerical states** within the environment.
+- **Characteristics of a Fully Observable Environment**
+    
+    - The **observation**, **agent state**, and **environment state** all **collapse into the same quantity**.
+    - The agent can **use the environment state directly** to make decisions.
+    - This represents the **best-case scenario** for learning and decision-making.
+- **Markov Decision Processes (MDPs)**
+    
+    - When dealing with fully observable environments, we use the **Markov Decision Process (MDP) framework**.
+    - MDPs serve as the **main formalism in reinforcement learning**.
+    - The next lecture will **explore MDPs in detail** as a powerful tool for modeling decision-making.
+- **State Representation & Realistic Challenges**
+    
+    - While fully observable environments are ideal, **many real-world problems involve partial observability**.
+    - Understanding **state representation** is crucial for handling such **realistic challenges**.
+    - The MDP formalism also helps in **addressing partially observable cases**.
+
+![Partially Observable Environments](./images/11-partially-observable-environments.png)
