@@ -213,3 +213,138 @@ The same loop applies to robotics, finance, and many AI applications.
 - The **learning algorithm** must extract patterns from this experience to improve future decisions.
 
 This is the core problem of **reinforcement learning (RL)**—finding the best **policy** (strategy) to maximize rewards over time.
+
+
+
+***Should rewards always be scalar values?***
+
+The Debate: Scalar Rewards vs. Multiple Objectives
+
+- In RL, the **reward hypothesis** states that a **single scalar reward** is sufficient to represent any goal the agent is optimizing for.
+- However, in **real-world decision-making**, we often have **conflicting goals** (e.g., impressing your boss vs. keeping your partner happy).
+- The question arises: **Do we always have to use a single scalar reward, or can we work with multiple, possibly conflicting objectives?**
+
+RL Perspective: Everything Can Be Converted to a Scalar Reward
+
+- Ultimately, an agent must **choose one action** at each step.
+- To compare different choices, there must be a **common scale** to weigh them.
+- This means that, even if multiple objectives exist, they must be **combined** into a single scalar value for decision-making.
+- This process involves assigning **weights or trade-offs** to different objectives.
+
+Example: Work vs. Personal Life Decision
+
+- Suppose an agent (you) must choose between:
+    1. **Working late** → Increases boss’s approval (career growth).
+    2. **Spending time with a partner** → Strengthens relationship.
+- You have to **assign a value to each outcome** and decide.
+- If you prioritize work more at that moment, you might assign a **higher reward** to working late.
+- This conversion of multiple factors into **one final decision metric** aligns with RL’s approach to scalar rewards.
+
+**Key Takeaways**
+
+- RL assumes that **all goals must ultimately be mapped to a single reward function**.
+- Even if multiple competing goals exist, they must be **reduced** to a single scalar value to make decisions.
+- This does not mean **multiple objectives don’t exist**, but rather that they need to be **aggregated** into one measure.
+### State
+![History and State](./images/5-history-state.png)
+
+
+- **History (H<sub>t</sub>)**
+    
+    - The history consists of all past observations, actions, and rewards.
+    - The agent only has access to this history and must make decisions based on it.
+- **Agent’s Decision Process**
+    
+    - The goal of RL is to develop an algorithm that maps history (H<sub>t</sub>) to an action (A<sub>t</sub>).
+    - This mapping is crucial for determining the agent’s next move.
+- **Environment’s Role**
+    
+    - The environment receives the agent’s action and updates itself based on history.
+    - It emits a new observation and reward for the agent.
+- **State Representation**
+    
+    - While history is essential, it becomes impractically large over time.
+    - Instead of using raw history, we define a **state (S<sub>t</sub>)**, a compressed representation that captures all necessary information to decide what happens next.
+    - This allows for more efficient learning and decision-making.
+
+**Understanding Different Definitions of State**
+
+![Environment State](./images/6-environment-state.png)
+
+**Environment State:**
+
+The **environment state** refers to the underlying information within a system that determines what happens next. It represents the **true, complete description of the environment** at any given moment. However, this information is often **not fully observable** to the agent (e.g., a robot, AI system, or reinforcement learning agent).
+
+**Key Characteristics of Environment State:**
+
+1. **Defines What Happens Next:**
+    
+    - The environment has an internal state that dictates what will happen in the next step.
+    - Example: In an Atari game emulator, the emulator has an **internal representation** of the game state, which determines how the game will progress based on inputs.
+2. **Different Scenarios:**
+    
+    - If it's a **robot interacting with the real world**, the environment state consists of all physical variables determining what happens next.
+    - In a **factory**, the environment state includes all process-related variables.
+    - In a **game emulator**, the environment state includes internal variables controlling how the game plays out.
+3. **Hidden from the Agent:**
+    
+    - The agent **does not have direct access** to the environment state.
+    - Instead, the agent **only gets observations** from the environment (e.g., images, sensor data, rewards).
+    - The agent must **infer** or **estimate** the true environment state from these observations.
+4. **Not Always Useful for Decision-Making:**
+    
+    - Even if the agent could access the full environment state, not all of that information would be useful for making good decisions.
+    - Example: If a robot is navigating a room, the atomic configuration of a rock in Australia is **not relevant** to its decision-making.
+    - Instead, the agent should **focus on local observations** to determine the best action.
+
+**Implications for Reinforcement Learning and AI**
+
+- **Why is this distinction important?**
+    
+    - In reinforcement learning, an **agent** does not get to see the full environment state but instead **receives observations** and must learn to act based on them.
+    - The **Markov Decision Process (MDP)** framework assumes that decisions are based on **states**, but in practice, we often work with **observations** instead.
+- **Example in a Game (Atari Emulator):**
+    
+    - The **environment state** includes all variables inside the emulator that govern how the game runs.
+    - The agent **only sees** pixel observations and score updates.
+    - The challenge is to infer **the most relevant aspects of the environment state** based on limited observations.
+
+The question asks:
+
+_"**If you put a lot of agents together in the same environment, do you see any kind of self-organized behavior or patterns?**"_
+
+In simpler terms:
+
+- If you have **many independent "brains" (agents)** acting in the same world, will they start to organize themselves into patterns naturally, even without being explicitly told to do so?
+
+For example:
+
+- If you release **many birds into the sky**, will they start flying in synchronized patterns (like a flock)?
+- If many people are walking in a busy street, do they start **unconsciously forming lanes** to avoid bumping into each other?
+
+The answer:
+
+- **Each agent sees the other agents as part of the "environment."**
+    
+    - Imagine you are one of the birds in a flock.
+    - From **your** perspective, the other birds are just part of your surroundings.
+    - You don’t think, "I am in a multi-agent system"; you just react to what’s around you.
+- **This means that, formally, nothing needs to change in the way we describe the environment.**
+    
+    - If we define an environment for **one** agent, we don’t need to redefine everything just because multiple agents exist.
+    - Each agent simply **interacts with whatever is around it**, including other agents.
+- **But does self-organized behavior emerge?**
+    
+    - The answer is **yes, it can happen**.
+    - There’s a lot of research on how multiple agents interacting in a shared environment can lead to **emergent behaviors**.
+    - However, this particular discussion isn’t diving into those details.
+
+**What Does This Mean for "Environment State"?**
+
+> **"The environment state doesn't tell us anything useful for actually building algorithms because we don't see it."**
+
+This means:
+
+- In real-world AI, **we don’t have direct access to the full environment state**—just like how a person can’t see everything in the world at once.
+- We **only see part of the environment** (this is called an **observation**).
+- This is why AI agents have to make decisions based on **limited information**, not the full environment state.
