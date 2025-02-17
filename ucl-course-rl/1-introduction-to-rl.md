@@ -5,7 +5,7 @@
 4. Problems with Reinforcement Learning
 # About Reinforcement Learning
 ### Many Faces of Reinforcement Learning
-![Many Faces of RL](01-many-faces-of-rl.png)
+![Many Faces of RL](./images/01-many-faces-of-rl.png)
 
 1. **Reinforcement Learning as a Cross-Disciplinary Field**
     
@@ -29,7 +29,7 @@
     - The study of RL helps understand how both artificial systems and biological organisms make decisions to maximize rewards.
 
 ### Branches of Machine Learning
-![Branches of Machine Learning](02-branches-of-ml.png)
+![Branches of Machine Learning](./images/02-branches-of-ml.png)
 ### Characteristics of Reinforcement Learning
 
 1. **No Supervisor in Reinforcement Learning**
@@ -115,7 +115,7 @@ Key points:
 - **Rewards define objectives**: If there are no intermediate rewards, the agent only receives a reward at the end of an episode.
 - **Handling time-based goals**: If the goal is to achieve something in the shortest time, a common approach is to set a reward of -1 per time step, encouraging the agent to complete the task as quickly as possible.
 ### Examples of Rewards
-![Examples of Rewards](03-rewards-example.png)
+![Examples of Rewards](./images/03-rewards-example.png)
 
 - **Helicopter Stunts:** Positive rewards are given for following the desired trajectory or staying within a small radius of the target position. A large negative reward is assigned for crashing.
     
@@ -151,7 +151,7 @@ While these problems appear different, **the goal is to create a unified machine
 	- **Reward**: Feedback received for taking an action.
 	- **Policy**: The strategy for choosing actions to maximize future rewards.
 ### Environments
-![Agent and Environments](04-agent-environments.png)
+![Agent and Environments](./images/04-agent-environments.png)
 
 **1. The Agent**
 
@@ -246,7 +246,7 @@ Example: Work vs. Personal Life Decision
 - Even if multiple competing goals exist, they must be **reduced** to a single scalar value to make decisions.
 - This does not mean **multiple objectives don’t exist**, but rather that they need to be **aggregated** into one measure.
 ### State
-![History and State](05-history-state.png)
+![History and State](./images/05-history-state.png)
 
 
 - **History (H<sub>t</sub>)**
@@ -269,7 +269,7 @@ Example: Work vs. Personal Life Decision
 
 **Understanding Different Definitions of State**
 
-![Environment State](06-environment-state.png)
+![Environment State](./images/06-environment-state.png)
 
 **Environment State:**
 
@@ -349,7 +349,7 @@ This means:
 - We **only see part of the environment** (this is called an **observation**).
 - This is why AI agents have to make decisions based on **limited information**, not the full environment state.
 
-![Agent State](07-agent-state.png)
+![Agent State](./images/07-agent-state.png)
 
 
 
@@ -379,7 +379,7 @@ This means:
     - It allows the RL algorithm to **make optimal action selections** based on past experiences.
     - Designing an effective state representation is critical to the **performance of RL models**.
 
-![Information State](08-information-state.png)
+![Information State](./images/08-information-state.png)
 
 - **Definition of Markov State:**
     
@@ -479,7 +479,7 @@ This means:
 3. **Keeping the entire history is technically Markovian**, but it’s **impractical**.
 4. The real challenge in reinforcement learning is **finding a compact and effective representation** of state that captures all relevant information **without storing everything**.
 
-![Rat Example](09-rat-example.png)
+![Rat Example](./images/09-rat-example.png)
 
 - An example to illustrate how learning by trial and error works in an environment where actions lead to either rewards (cheese) or punishments (electrocution). 
 - The example involves a rat (the audience) interacting with an "evil experimenter" who provides different sequences of actions (light, bell, lever) and outcomes.
